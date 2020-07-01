@@ -199,12 +199,10 @@ class QuantizeEnv:
 
     def _build_index(self):
         self.quantizable_idx = []
-        self.layer_type_list = []
         self.bound_list = []
         for i, m in enumerate(self.model.modules()):
             if type(m) in self.quantizable_layer_types:
                 self.quantizable_idx.append(i)
-                self.layer_type_list.append(type(m))
                 self.bound_list.append((self.min_bit, self.max_bit))
         print('=> Final bound list: {}'.format(self.bound_list))
 
